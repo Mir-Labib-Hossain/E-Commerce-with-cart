@@ -1,25 +1,25 @@
 import styled from "styled-components";
 
 export const ProductCard = styled.div`
-  border: 2px solid ${({ theme }) => theme.orange};
   width: 200px;
-  height: 375px;
-  padding: 10px;
+  height: 250px;
   margin: 10px;
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  background-color: white;
   cursor: pointer;
-  
-  h1 {
-    font-size: 20px;
+  span {
+    margin-right: 10px;
+  }
+  > div > div > p {
+    font-size: 15px;
+/* color: white; */
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
-    height: 73px;
+    height: 19px;
+    margin-right: 3px;
   }
 `;
 
@@ -28,6 +28,10 @@ export const CardImg = styled.div<{ bg: string }>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
   max-height: 200px;
   min-height: 200px;
   width: 100%;
@@ -42,7 +46,7 @@ export const AddToCartBtn = styled.button`
   font-weight: bolder;
   color: white;
   cursor: pointer;
-  transition: background .5s ;
+  transition: background 0.5s;
   z-index: 99;
   :hover {
     background-color: ${({ theme }) => theme.orange};

@@ -15,7 +15,7 @@ const ProductListing: React.FC = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  const products = useSelector((state: IState) => state.productReducer.products);
+  const products = useSelector((state: IStore) => state.productReducer.products);
   console.log();
 
   return Object.keys(products).length > 1 ? <ProductListingView products={products} /> :<Loading/>;

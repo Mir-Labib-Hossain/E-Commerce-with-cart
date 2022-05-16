@@ -18,7 +18,7 @@ const ProductDetails: React.FC = () => {
     };
   }, [dispatch, productId]);
 
-  const product = useSelector((state: IState) => state.selectedProductReducer.product);
+  const product = useSelector((state: IStore) => state.selectedProductReducer.product);
 
   return product && <ProductDetailsView product={product} />;
 };

@@ -15,7 +15,7 @@ const ProductDetailsView: React.FC<ProductDetailsViewProps> = ({ product }) => {
         <Span>{category}</Span>
         <Header fontSize="25px">${price}</Header>
         <Span>{description}</Span>
-        <Row>
+        <Row justifyContent="space-between" alignItems="baseline">
           <Button>Add to cart | {rating.count} in stock</Button>
           <Header fontSize="18px">{rating.rate}</Header>
         </Row>

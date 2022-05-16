@@ -6,7 +6,7 @@ interface IAction {
     value: number;
   };
 }
-const initialState = { value: 10 };
+const initialState = { value: 0 };
 
 export const loaderReducer = (state = initialState, { type, payload }: IAction) => {
   switch (type) {

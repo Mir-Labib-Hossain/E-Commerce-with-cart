@@ -1,8 +1,8 @@
-interface IState {
+ interface IStore {
   selectedProductReducer: ISelectedProductReducer;
   productReducer: IProductReducer;
   loaderReducer: ILoaderReducer;
-  cartReducer: ICartReducer;
+  persistedReducers: IPersistedReducers;
 }
 
 interface IProduct {
@@ -33,11 +33,15 @@ interface ISelectedProductReducer {
 interface ILoaderReducer {
   value: number;
 }
-
+interface IPersistedReducers{
+  cartReducer:ICartReducer
+}
 interface ICartReducer {
-  cart: ICartProduct[];
+  cart: ICartProducts;
 }
 
 interface ICartProduct extends IProduct {
   qty: number;
 }
+
+type ICartProducts = ICartProduct[];

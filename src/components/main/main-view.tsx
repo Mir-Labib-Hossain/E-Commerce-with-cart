@@ -8,7 +8,7 @@ import ProductDetails from "../productDetails";
 import ProductListing from "../productListing";
 
 const MainView: React.FC = () => {
-  const loaderValue = useSelector((state: IState) => state.loaderReducer.value);
+  const loaderValue = useSelector((state: IStore) => state.loaderReducer.value);
 
   return (
     <>

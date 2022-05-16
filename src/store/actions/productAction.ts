@@ -5,7 +5,7 @@ import { setLoaderValue } from "./loaderAction";
 
 export const fetchProducts =
   () =>
-  async (dispatch: Dispatch, getState: any): Promise<void> => {
+  async (dispatch: Dispatch): Promise<void> => {
     dispatch(setLoaderValue(30));
 
     const response = await fakeStoreApi.get("./products");
@@ -23,7 +23,7 @@ export const setProducts = (products: IProducts) => {
   };
 };
 
-export const fetchSelectedProduct = (productId: string) => async (dispatch: Dispatch, getState: any) => {
+export const fetchSelectedProduct = (productId: string) => async (dispatch: Dispatch) => {
   dispatch(setLoaderValue(40));
 
   const response = await fakeStoreApi.get(`/products/${productId}`);

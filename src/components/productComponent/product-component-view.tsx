@@ -2,22 +2,32 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { addToCart } from "../../store/actions/cartAction";
-import { Header, Paragraph, Span } from "../../styles/common.styled";
+import { Div, Icon, Paragraph, Row, Span } from "../../styles/common.styled";
 import { AddToCartBtn, CardImg, ProductCard } from "./styled";
 const ProductComponentView: React.FC<IProduct> = (product) => {
   const dispatch = useDispatch();
-  const addToCartHandler = () => dispatch(addToCart(product));
+  const addToCartHandler = () => {console.log(product);
+   dispatch(addToCart(product))
+  };
 
-  const { id, image, title, category, description, price, rating } = product;
+  const { id, image, title, category, price } = product;
   return (
     <ProductCard>
       <Link to={`/product/${id}`}>
         <CardImg bg={image} />
-        <Header fontSize="20px">{title}</Header>
-        <Paragraph>${price}</Paragraph>
-        <Span>{category}</Span>
       </Link>
-      <AddToCartBtn onClick={addToCartHandler}>Add to Cart</AddToCartBtn>
+      <Row justifyContent="space-between" alignItems="center">
+        <Div>
+          <Paragraph>{title}</Paragraph>
+          <Row justifyContent="start" alignItems="center">
+            <Span>{category} </Span>
+            <Paragraph> ${price}</Paragraph>
+          </Row>
+        </Div>
+        <AddToCartBtn onClick={addToCartHandler}>
+          <Icon fontSize="13px" className="fa-solid fa-cart-plus"></Icon>
+        </AddToCartBtn>
+      </Row>
     </ProductCard>
   );
 };
