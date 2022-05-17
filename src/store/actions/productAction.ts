@@ -7,11 +7,20 @@ export const fetchProducts =
   () =>
   async (dispatch: Dispatch): Promise<void> => {
     dispatch(setLoaderValue(30));
-
     const response = await fakeStoreApi.get("./products");
-
     dispatch(setLoaderValue(60));
     dispatch(setProducts(response.data));
+    dispatch(setLoaderValue(80));
+    dispatch(setLoaderValue(100));
+  };
+
+export const fetchSelectedProduct =
+  (productId: string) =>
+  async (dispatch: Dispatch): Promise<void> => {
+    dispatch(setLoaderValue(40));
+    const response = await fakeStoreApi.get(`/products/${productId}`);
+    dispatch(setLoaderValue(60));
+    dispatch(selectedProduct(response.data));
     dispatch(setLoaderValue(80));
     dispatch(setLoaderValue(100));
   };
@@ -21,17 +30,6 @@ export const setProducts = (products: IProducts) => {
     type: SET_PRODUCTS,
     payload: products,
   };
-};
-
-export const fetchSelectedProduct = (productId: string) => async (dispatch: Dispatch) => {
-  dispatch(setLoaderValue(40));
-
-  const response = await fakeStoreApi.get(`/products/${productId}`);
-
-  dispatch(setLoaderValue(60));
-  dispatch(selectedProduct(response.data));
-  dispatch(setLoaderValue(80));
-  dispatch(setLoaderValue(100));
 };
 
 export const selectedProduct = (product: IProduct) => {

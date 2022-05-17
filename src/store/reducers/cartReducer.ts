@@ -1,31 +1,21 @@
-import { ADD_TO_CART, ADJUST_QTY, LOAD_CURRENT_PRODUCT, REMOVE_FROM_CART } from "./../contants/action-types";
+import { SET_CART } from "./../contants/action-types";
 
-interface ActionProps {
-  type: {};
-  payload: {
-    updatedCartProducts?: ICartProducts;
-    value?: number;
-  };
+interface CartActionProps {
+  type: string;
+  payload: ICartProducts;
 }
 
 const initialState = {
   cart: [],
 };
 
-export const cartReducer = (state = initialState, { type, payload }: ActionProps) => {
+export const cartReducer = (state = initialState, { type, payload }: CartActionProps) => {
   switch (type) {
-    case ADD_TO_CART:
-    case REMOVE_FROM_CART:
+    case SET_CART:
       return {
         ...state,
-        cart: payload.updatedCartProducts,
+        cart: payload,
       };
-
-    case ADJUST_QTY:
-      return state;
-
-    case LOAD_CURRENT_PRODUCT:
-      return state;
 
     default:
       return state;

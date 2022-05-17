@@ -10,22 +10,8 @@ export const CartProductWrapper = styled.div`
   border-radius: 10px;
   background-color: white;
   position: relative;
+ `;
 
-
-  button {
-    width: 30px;
-    height: 30px;
-    display: grid;
-    place-content: center;
-    margin: 0 10px;
-    background-color: ${({ theme }) => theme.yellow};
-    cursor: pointer;
-    font-size: 17px;
-    :hover {
-      background-color: ${({ theme }) => theme.orange};
-    }
-  }
-`;
 export const CartImage = styled.div<{ bg: string }>`
   background-image: url(${({ bg }) => bg});
   background-position: center;

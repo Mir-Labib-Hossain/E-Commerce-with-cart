@@ -4,8 +4,8 @@ const initialState = {
 };
 
 interface IAction {
-  type: {};
-  payload: {};
+  type: string;
+  payload: IProduct | IProducts;
 }
 
 export const productReducer = (state = initialState, { type, payload }: IAction) => {

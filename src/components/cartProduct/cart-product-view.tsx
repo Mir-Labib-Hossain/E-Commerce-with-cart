@@ -1,14 +1,15 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { removeFromCart } from "../../store/actions/cartAction";
-import { Button, Icon, Paragraph, Row, Span } from "../../styles/common.styled";
+import { adjustQty, removeFromCart } from "../../store/actions/cartAction";
+import { CircleBtn, Icon, Paragraph, Row, Span } from "../../styles/common.styled";
 import { CartImage, CartProductWrapper, DeleteProductIcon } from "./styled";
 const CartProductView: React.FC<ICartProduct> = ({ id, image, title, category, description, price, qty, rating }) => {
   const dispatch = useDispatch();
-  const removeProduct = (productId: number) => dispatch(removeFromCart(productId));
+  const removeProductHandler = (productId: number) => dispatch(removeFromCart(productId));
+  const adjustQtyHandler = (productId: number, value: number) => dispatch(adjustQty(productId, value));
   return (
     <CartProductWrapper>
-      <DeleteProductIcon onClick={() => removeProduct(id)} fontSize="15px" className="fa-solid fa-xmark"></DeleteProductIcon>
+      <DeleteProductIcon onClick={() => removeProductHandler(id)} fontSize="15px" className="fa-solid fa-xmark"></DeleteProductIcon>
       <Row justifyContent="space-between" alignItems="center" width="100%">
         <Row justifyContent="space-between" alignItems="center" width="15%">
           <CartImage bg={image} />
@@ -21,18 +22,18 @@ const CartProductView: React.FC<ICartProduct> = ({ id, image, title, category, d
 
         <Row justifyContent="center" alignItems="center" width="20%">
           {qty === 1 ? (
-            <Button>
+            <CircleBtn onClick={() => removeProductHandler(id)}>
               <Icon fontSize="13px" className="fa-regular fa-trash-can"></Icon>
-            </Button>
+            </CircleBtn>
           ) : (
-            <Button>-</Button>
+            <CircleBtn onClick={() => adjustQtyHandler(id, -1)}>-</CircleBtn>
           )}
           <Paragraph bold>{qty}</Paragraph>
-          <Button>+</Button>
+          <CircleBtn onClick={() => adjustQtyHandler(id, 1)}>+</CircleBtn>
         </Row>
 
         <Row justifyContent="end" alignItems="center" width="15%">
-          <Paragraph bold>${price * qty}</Paragraph>
+          <Paragraph bold>${(price * qty).toFixed(2)}</Paragraph>
         </Row>
       </Row>
     </CartProductWrapper>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Header, Row, Span } from "../../styles/common.styled";
+import { ThemedBtn, Header, Row, Span } from "../../styles/common.styled";
 import { ProductDetails, ProductDetailsWrapper, ProductImg } from "./styled";
 interface ProductDetailsViewProps {
   product: IProduct;
@@ -16,7 +16,7 @@ const ProductDetailsView: React.FC<ProductDetailsViewProps> = ({ product }) => {
         <Header fontSize="25px">${price}</Header>
         <Span>{description}</Span>
         <Row justifyContent="space-between" alignItems="baseline">
-          <Button>Add to cart | {rating.count} in stock</Button>
+          <ThemedBtn width="100%">Add to cart | {rating.count} in stock</ThemedBtn>
           <Header fontSize="18px">{rating.rate}</Header>
         </Row>
       </ProductDetails>
